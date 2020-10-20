@@ -68,3 +68,5 @@ function getJwt(user) {
 
   return jwt.sign(payload, config.jwtSecret, jwtOptions);
 }
+
+module.exports = router;
