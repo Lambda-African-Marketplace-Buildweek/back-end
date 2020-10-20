@@ -9,7 +9,7 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './data/african-market'
+      filename: './data/african-market.db3'
     },
     useNullAsDefault: true,
     migrations: {

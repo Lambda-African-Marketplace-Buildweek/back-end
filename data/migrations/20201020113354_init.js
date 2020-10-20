@@ -18,20 +18,20 @@ exports.up = function(knex) {
         .unsigned()
         .references('locations.id')
         .onDelete('RESTRICT')
-        .onChange('CASCADE')
+        .onUpdate('CASCADE')
     })
     .createTable('owners', tbl => {
       tbl.increments();
 
       tbl.text('username', 128).unique().notNullable();
-      tbl.text('password', 128).unique.notNullable();
+      tbl.text('password', 128).unique().notNullable();
 
       tbl
         .integer('item')
         .unsigned()
         .references('items.id')
         .onDelete('RESTRICT')
-        .onChange('CASCADE');
+        .onUpdate('CASCADE');
     });
 };
 
