@@ -4,7 +4,7 @@ module.exports = {
   add,
   addItem,
   find,
-  // findBy,
+  findBy,
   findById,
   findItemById,
 };
@@ -44,4 +44,10 @@ async function addItem(item) {
 
 function findItemById(id) {
   return db('items').where({ id }).first();
+}
+
+function findBy(filter) {
+  return db('owners as o')
+    .select('id', 'username', 'password')
+    .where(filter)
 }
