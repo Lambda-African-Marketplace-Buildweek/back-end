@@ -7,6 +7,8 @@ module.exports = {
   findBy,
   findById,
   findItemById,
+
+  getAll,
 };
 
 // edit this later as get all method returning all items?
@@ -50,4 +52,9 @@ function findBy(filter) {
   return db('owners as o')
     .select('id', 'username', 'password')
     .where(filter)
+}
+
+function getAll() {
+  return db('items as i')
+    .select('i.name', 'i.description', 'i.price');
 }

@@ -23,7 +23,7 @@ exports.up = function(knex) {
     .createTable('owners', tbl => {
       tbl.increments();
 
-      tbl.text('username', 128).unique().notNullable();
+      tbl.text('name', 128).unique().notNullable();
       tbl.text('password', 128).unique().notNullable();
 
       tbl
