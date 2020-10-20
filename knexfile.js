@@ -1,7 +1,7 @@
 // Update with your config settings.
 
 // update this when the database is hosted using heroku
-const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/filler_name";
+const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/african-market";
 
 
 module.exports = {
