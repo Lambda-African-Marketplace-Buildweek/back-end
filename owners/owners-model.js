@@ -50,7 +50,7 @@ function findItemById(id) {
 
 function findBy(filter) {
   return db('owners as o')
-    .select('id', 'username', 'password')
+    //.select('id', 'username', 'password')
     .where(filter)
 }
 
