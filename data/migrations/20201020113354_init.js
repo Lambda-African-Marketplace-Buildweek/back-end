@@ -1,6 +1,11 @@
 
 exports.up = function(knex) {
   return knex.schema
+    .createTable('locations', tbl => {
+      tbl.increments();
+
+      tbl.string('location', 128);
+    })
     .createTable('items', tbl => {
       tbl.increments();
 
@@ -8,7 +13,12 @@ exports.up = function(knex) {
       tbl.string('description', 512).unique().notNullable();
       tbl.decimal('price', 10, 2).notNullable();
 
-      tbl.string('location').notNullable();
+      tbl
+        .integer('location')
+        .unsigned()
+        .references('locations.id')
+        .onDelete('RESTRICT')
+        .onChange('CASCADE')
     })
     .createTable('owners', tbl => {
       tbl.increments();
@@ -22,18 +32,12 @@ exports.up = function(knex) {
         .references('items.id')
         .onDelete('RESTRICT')
         .onChange('CASCADE');
-    })
-    .createTable('locations', tbl => {
-      tbl.increments();
-
-      tbl.string('location', 128);
     });
 };
 
 exports.down = function(knex) {
   return knex.schema
-    .dropTableIfExists('locations')
     .dropTableIfExists('owners')
-    .dropTableIfExists('items');
-  
+    .dropTableIfExists('items')
+    .dropTableIfExists('locations');
 };

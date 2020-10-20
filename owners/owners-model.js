@@ -2,9 +2,11 @@ const db = require('../data/connection.js');
 
 module.exports = {
   add,
+  addItem,
   find,
   // findBy,
   findById,
+  findItemById,
 };
 
 // edit this later as get all method returning all items?
@@ -27,4 +29,19 @@ async function add(owner) {
 
 function findById(id) {
   return db('owners').where({ id }).first();
+}
+
+async function addItem(item) {
+  try {
+    const [id] = await db('items').insert(item, 'id');
+
+    return findById(id);
+  }
+  catch (error) {
+    throw error;
+  }
+}
+
+function findItemById(id) {
+  return db('items').where({ id }).first();
 }

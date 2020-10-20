@@ -13,7 +13,7 @@ server.use(express.json());
 server.use(cors());
 
 server.use('/api/auth', authRouter);
-//server.use('/api/owners', ownerRouter);
+server.use('/api/owners', ownerRouter);
 
 server.get('/', (req, res) => {
   res.status(200).json({ base: 'The server is running' });
